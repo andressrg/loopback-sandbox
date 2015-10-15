@@ -33,11 +33,11 @@
     "public": false
   },
   "Library": {
-    "dataSource": "db",
+    "dataSource": "mysqlDs",
     "public": true
   },
   "Book": {
-    "dataSource": "db",
+    "dataSource": "mysqlDs",
     "public": true
   }
 }

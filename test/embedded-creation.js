@@ -12,6 +12,11 @@ describe('Embedded creation', function() {
 
   it('creates books in paralell', function() {
     var library;
+    var booksNames = [
+      'My first book',
+      'My second book',
+      'My third book'
+    ];
     return request(app)
       .post('/api/libraries')
       .send({ name: 'My library' })
@@ -20,11 +25,7 @@ describe('Embedded creation', function() {
       .then(function(res) {
         library = res.body;
 
-        var booksPromises = [
-            'My first book',
-            'My second book',
-            'My third book'
-          ].map(function(bookName) {
+        var booksPromises = booksNames.map(function(bookName) {
             return request(app)
               .post('/api/libraries/' + library.id + '/books')
               .send({ name: bookName })
@@ -39,7 +40,7 @@ describe('Embedded creation', function() {
           .then(function(fetchedLibrary) {
             var libraryJSON = fetchedLibrary.toJSON();
             
-            expect(libraryJSON._books.length).to.be.equal(3);
+            expect(libraryJSON._books.length).to.be.equal(booksNames.length);
           });
       });
   });

@@ -31,5 +31,13 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "Library": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Book": {
+    "dataSource": "db",
+    "public": true
   }
 }
